@@ -19,7 +19,6 @@ public enum Extension
 
 public class JsonManager : GenericSingleton<JsonManager>
 {
-    [SerializeField] private DataTable data;
     [SerializeField] private string path;
     public Extension extension = Extension.json;
     public string fileName;
@@ -71,72 +70,6 @@ public class JsonManager : GenericSingleton<JsonManager>
 
         jsonString = www.text;
 #endif
-
-        
-        data = JsonConvert.DeserializeObject<DataTable>(jsonString);
-    }
-
-    public List<MatchingData> GetMatchingData()
-    {
-        return data.MatchingData;
-    }
-
-    public List<ISDKeywordLevel> GetISDKeywordLevel()
-    {
-        return data.ISDKeywordLevel;
-    }
-
-    public List<ReviewCommentData> GetReviewCommentData()
-    {
-        List<ReviewCommentData> returnList = new List<ReviewCommentData>();
-
-        foreach (var value in data.ReviewComment)
-        {
-            returnList.Add(value);
-        }
-
-        return returnList;
-    }
-
-    public List<EventData> GetEventData()
-    {
-        return data.Event;
-    }
-
-    public PlayerData GetPlayerData()
-    {
-        return data.PlayerData[0];
-    }
-
-    public List<ProductorData> GetProductorData()
-    {
-        return data.ProductorData;
-    }
-
-    public List<BroadcastRecord> GetBroadcastRecord()
-    {
-        return data.BroadcastRecord;
-    }
-
-    public List<Keyword> GetKeyword()
-    {
-        return data.Keyword;
-    }
-
-    public List<CharacterData> GetCharacterData()
-    {
-        return data.CharacterData;
-    }
-    public List<CharacterComment> GetCharacterComment()
-    {
-        return data.CharacterComment;
-    }
-    public List<GameHelpInfo> GetGameHelpInfo()
-    {
-        return data.GameHelpInfo;
-    }
-    public List<ResourcesTable> GetResourcesTable()
-    {
-        return data.ResourcesTable;
+        //data = JsonConvert.DeserializeObject<DataTable>(jsonString);
     }
 }

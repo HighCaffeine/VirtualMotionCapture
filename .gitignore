@@ -66,6 +66,9 @@ sysinfo.txt
 # Mono auto generated files
 mono_crash.*
 
+# Booth Files
+Assets/ExternalFiles/Booth
+
 # Builds
 *.apk
 *.aab
