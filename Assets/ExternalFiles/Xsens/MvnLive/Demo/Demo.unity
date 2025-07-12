@@ -361,6 +361,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u751F\u99D2\u30DF\u30EB_\u79C1\u670D"
       objectReference: {fileID: 0}
+    - target: {fileID: 5364256642849020257, guid: 2032eb0f0d5cf154f90a1e19accb852f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3efc5f7b0bb26a5499f53d0a9cd9d4ef, type: 2}
     - target: {fileID: 6151863572428173610, guid: 2032eb0f0d5cf154f90a1e19accb852f, type: 3}
       propertyPath: m_DirtyAABB
       value: 0
@@ -696,7 +700,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 40
+  field of view: 30
   orthographic: 0
   orthographic size: 1.22
   m_Depth: 0
@@ -722,13 +726,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1161806540}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0000000018641615, y: 0.99202335, z: -0.12605444, w: -0.000000043671637}
-  m_LocalPosition: {x: -0.13, y: 1.73, z: 3.12}
+  m_LocalRotation: {x: -0, y: -0.9986295, z: 0.052335896, w: 0}
+  m_LocalPosition: {x: -0.06, y: 1.24, z: 2.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1492607988}
-  m_LocalEulerAnglesHint: {x: 14.483, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 6, y: -180, z: 0}
 --- !u!114 &1161806546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -802,9 +806,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1161806545}
   - {fileID: 82727729}
   - {fileID: 1557623013}
+  - {fileID: 1161806545}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1557623009
@@ -849,7 +853,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2bee542ea956d7848839c287becc4806, type: 2}
+  - {fileID: 2100000, guid: 77bc903c519b37944a914f7a3d7dff10, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
