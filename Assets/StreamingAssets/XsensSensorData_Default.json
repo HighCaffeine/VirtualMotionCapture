@@ -1,0 +1,327 @@
+{
+    "sensors": [
+        {
+            "name": "Pelvis",
+            "bone": "Hips",
+            "localPositionOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "forward": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "up": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Sternum",
+            "bone": "Chest",
+            "localPositionOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "forward": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "up": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Head",
+            "bone": "Head",
+            "localPositionOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "forward": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "up": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "L_Shoulder",
+            "bone": "LeftShoulder",
+            "localPositionOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "forward": {
+                "x": 1.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "up": {
+                "x": 0.0,
+                "y": -1.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "L_UpperArm",
+            "bone": "LeftUpperArm",
+            "localPositionOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "forward": {
+                "x": 0.0,
+                "y": -1.0,
+                "z": 0.0
+            },
+            "up": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -1.0
+            }
+        },
+        {
+            "name": "L_ForeArm",
+            "bone": "LeftLowerArm",
+            "localPositionOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "forward": {
+                "x": 0.0,
+                "y": -1.0,
+                "z": 0.0
+            },
+            "up": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -1.0
+            }
+        },
+        {
+            "name": "L_Hand",
+            "bone": "LeftHand",
+            "localPositionOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "forward": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "up": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "L_UpperLeg",
+            "bone": "LeftUpperLeg",
+            "localPositionOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "forward": {
+                "x": 0.0,
+                "y": -1.0,
+                "z": 0.0
+            },
+            "up": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            }
+        },
+        {
+            "name": "L_LowerLeg",
+            "bone": "LeftLowerLeg",
+            "localPositionOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "forward": {
+                "x": 0.0,
+                "y": -1.0,
+                "z": 0.0
+            },
+            "up": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            }
+        },
+        {
+            "name": "L_Foot",
+            "bone": "LeftFoot",
+            "localPositionOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "forward": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "up": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "R_Shoulder",
+            "bone": "RightShoulder",
+            "localPositionOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "forward": {
+                "x": -1.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "up": {
+                "x": 0.0,
+                "y": -1.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "R_UpperArm",
+            "bone": "RightUpperArm",
+            "localPositionOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "forward": {
+                "x": 0.0,
+                "y": -1.0,
+                "z": 0.0
+            },
+            "up": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -1.0
+            }
+        },
+        {
+            "name": "R_Forearm",
+            "bone": "RightLowerArm",
+            "localPositionOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "forward": {
+                "x": 0.0,
+                "y": -1.0,
+                "z": 0.0
+            },
+            "up": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -1.0
+            }
+        },
+        {
+            "name": "R_Hand",
+            "bone": "RightHand",
+            "localPositionOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "forward": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "up": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "R_UpperLeg",
+            "bone": "RightUpperLeg",
+            "localPositionOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "forward": {
+                "x": 0.0,
+                "y": -1.0,
+                "z": 0.0
+            },
+            "up": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            }
+        },
+        {
+            "name": "R_LowerLeg",
+            "bone": "RightLowerLeg",
+            "localPositionOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "forward": {
+                "x": 0.0,
+                "y": -1.0,
+                "z": 0.0
+            },
+            "up": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            }
+        },
+        {
+            "name": "R_Foot",
+            "bone": "RightFoot",
+            "localPositionOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "forward": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "up": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+            }
+        }
+    ]
+}

@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c684b325970cd244cb4a9baacef571a7, type: 3}
+  m_Name: SensorOffsetData
+  m_EditorClassIdentifier: 
+  sensors:
+  - jointPoint: 2
+    bone: 0
+    localPositionOffset: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: 0, z: 1}
+    up: {x: 0, y: 1, z: 0}
+  - jointPoint: 1
+    bone: 8
+    localPositionOffset: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: 0, z: 1}
+    up: {x: 0, y: 1, z: 0}
+  - jointPoint: 0
+    bone: 10
+    localPositionOffset: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: 0, z: 1}
+    up: {x: 0, y: 1, z: 0}
+  - jointPoint: 3
+    bone: 11
+    localPositionOffset: {x: 0, y: 0, z: 0}
+    forward: {x: 1, y: 0, z: 0}
+    up: {x: 0, y: -1, z: 0}
+  - jointPoint: 4
+    bone: 13
+    localPositionOffset: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: -1, z: 0}
+    up: {x: 0, y: 0, z: -1}
+  - jointPoint: 5
+    bone: 15
+    localPositionOffset: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: -1, z: 0}
+    up: {x: 0, y: 0, z: -1}
+  - jointPoint: 6
+    bone: 17
+    localPositionOffset: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: 0, z: 1}
+    up: {x: 0, y: 1, z: 0}
+  - jointPoint: 7
+    bone: 1
+    localPositionOffset: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: -1, z: 0}
+    up: {x: 0, y: 0, z: 1}
+  - jointPoint: 8
+    bone: 3
+    localPositionOffset: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: -1, z: 0}
+    up: {x: 0, y: 0, z: 1}
+  - jointPoint: 9
+    bone: 5
+    localPositionOffset: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: 0, z: 1}
+    up: {x: 0, y: 1, z: 0}
+  - jointPoint: 10
+    bone: 12
+    localPositionOffset: {x: 0, y: 0, z: 0}
+    forward: {x: -1, y: 0, z: 0}
+    up: {x: 0, y: -1, z: 0}
+  - jointPoint: 11
+    bone: 14
+    localPositionOffset: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: -1, z: 0}
+    up: {x: 0, y: 0, z: -1}
+  - jointPoint: 12
+    bone: 16
+    localPositionOffset: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: -1, z: 0}
+    up: {x: 0, y: 0, z: -1}
+  - jointPoint: 13
+    bone: 18
+    localPositionOffset: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: 0, z: 1}
+    up: {x: 0, y: 1, z: 0}
+  - jointPoint: 14
+    bone: 2
+    localPositionOffset: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: -1, z: 0}
+    up: {x: 0, y: 0, z: 1}
+  - jointPoint: 15
+    bone: 4
+    localPositionOffset: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: -1, z: 0}
+    up: {x: 0, y: 0, z: 1}
+  - jointPoint: 16
+    bone: 6
+    localPositionOffset: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: 0, z: 1}
+    up: {x: 0, y: 1, z: 0}
