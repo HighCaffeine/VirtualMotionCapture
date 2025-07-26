@@ -4,9 +4,9 @@
             "name": "Pelvis",
             "bone": "Hips",
             "localPositionOffset": {
-                "x": 0.0,
+                "x": 0.05999999865889549,
                 "y": 0.0,
-                "z": 0.0
+                "z": 0.07000000029802323
             },
             "forward": {
                 "x": 0.0,
@@ -23,8 +23,8 @@
             "name": "Sternum",
             "bone": "Chest",
             "localPositionOffset": {
-                "x": 0.0,
-                "y": 0.0,
+                "x": -0.27000001072883608,
+                "y": -0.12999999523162843,
                 "z": 0.0
             },
             "forward": {
@@ -42,8 +42,8 @@
             "name": "Head",
             "bone": "Head",
             "localPositionOffset": {
-                "x": 0.0,
-                "y": 0.0,
+                "x": -0.07999999821186066,
+                "y": 0.10000000149011612,
                 "z": 0.0
             },
             "forward": {
@@ -61,9 +61,9 @@
             "name": "L_Shoulder",
             "bone": "LeftShoulder",
             "localPositionOffset": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "x": -0.07000000029802323,
+                "y": -0.03999999910593033,
+                "z": 0.03999999910593033
             },
             "forward": {
                 "x": 0.0,
@@ -80,9 +80,9 @@
             "name": "L_UpperArm",
             "bone": "LeftUpperArm",
             "localPositionOffset": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "x": -0.2199999988079071,
+                "y": 0.009999999776482582,
+                "z": 0.019999999552965165
             },
             "forward": {
                 "x": 0.0,
@@ -99,8 +99,8 @@
             "name": "L_ForeArm",
             "bone": "LeftLowerArm",
             "localPositionOffset": {
-                "x": 0.0,
-                "y": 0.0,
+                "x": -0.25,
+                "y": -0.019999999552965165,
                 "z": 0.0
             },
             "forward": {
@@ -119,8 +119,8 @@
             "bone": "LeftHand",
             "localPositionOffset": {
                 "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "y": 0.05999999865889549,
+                "z": 0.019999999552965165
             },
             "forward": {
                 "x": 0.0,
@@ -137,9 +137,9 @@
             "name": "L_UpperLeg",
             "bone": "LeftUpperLeg",
             "localPositionOffset": {
-                "x": 0.0,
+                "x": -0.20000000298023225,
                 "y": 0.0,
-                "z": 0.0
+                "z": 0.07000000029802323
             },
             "forward": {
                 "x": 0.0,
@@ -156,9 +156,9 @@
             "name": "L_LowerLeg",
             "bone": "LeftLowerLeg",
             "localPositionOffset": {
-                "x": 0.0,
+                "x": -0.11999999731779099,
                 "y": 0.0,
-                "z": 0.0
+                "z": -0.03999999910593033
             },
             "forward": {
                 "x": 0.0,
@@ -175,8 +175,8 @@
             "name": "L_Foot",
             "bone": "LeftFoot",
             "localPositionOffset": {
-                "x": 0.0,
-                "y": 0.0,
+                "x": -0.09000000357627869,
+                "y": -0.019999999552965165,
                 "z": 0.0
             },
             "forward": {
@@ -194,9 +194,9 @@
             "name": "R_Shoulder",
             "bone": "RightShoulder",
             "localPositionOffset": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "x": -0.07000000029802323,
+                "y": 0.03999999910593033,
+                "z": 0.03999999910593033
             },
             "forward": {
                 "x": 0.0,
@@ -213,9 +213,9 @@
             "name": "R_UpperArm",
             "bone": "RightUpperArm",
             "localPositionOffset": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "x": -0.2199999988079071,
+                "y": -0.009999999776482582,
+                "z": 0.019999999552965165
             },
             "forward": {
                 "x": 0.0,
@@ -232,8 +232,8 @@
             "name": "R_Forearm",
             "bone": "RightLowerArm",
             "localPositionOffset": {
-                "x": 0.0,
-                "y": 0.0,
+                "x": -0.25,
+                "y": 0.019999999552965165,
                 "z": 0.0
             },
             "forward": {
@@ -252,8 +252,8 @@
             "bone": "RightHand",
             "localPositionOffset": {
                 "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "y": -0.05999999865889549,
+                "z": 0.019999999552965165
             },
             "forward": {
                 "x": 0.0,
@@ -270,9 +270,9 @@
             "name": "R_UpperLeg",
             "bone": "RightUpperLeg",
             "localPositionOffset": {
-                "x": 0.0,
+                "x": -0.20000000298023225,
                 "y": 0.0,
-                "z": 0.0
+                "z": 0.07000000029802323
             },
             "forward": {
                 "x": 0.0,
@@ -289,9 +289,9 @@
             "name": "R_LowerLeg",
             "bone": "RightLowerLeg",
             "localPositionOffset": {
-                "x": 0.0,
+                "x": -0.11999999731779099,
                 "y": 0.0,
-                "z": 0.0
+                "z": -0.03999999910593033
             },
             "forward": {
                 "x": 0.0,
@@ -308,8 +308,8 @@
             "name": "R_Foot",
             "bone": "RightFoot",
             "localPositionOffset": {
-                "x": 0.0,
-                "y": 0.0,
+                "x": -0.09000000357627869,
+                "y": 0.019999999552965165,
                 "z": 0.0
             },
             "forward": {

@@ -9497,11 +9497,6 @@ Transform:
   - {fileID: 556573923}
   m_Father: {fileID: 702498788}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &684850078 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5364256642849020257, guid: 2032eb0f0d5cf154f90a1e19accb852f, type: 3}
-  m_PrefabInstance: {fileID: 1613933984}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &686389727 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8082867689283826643, guid: 2032eb0f0d5cf154f90a1e19accb852f, type: 3}
@@ -31725,7 +31720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensorData: {fileID: 11400000, guid: 8d96df444db62794188c3a6ca3fd92da, type: 2}
-  animator: {fileID: 684850078}
+  animator: {fileID: 345807071}
   gizmoSize: 0.1
 --- !u!1 &1862640914
 GameObject:

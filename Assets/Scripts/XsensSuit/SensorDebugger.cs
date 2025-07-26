@@ -51,7 +51,10 @@ public class SensorDebugger : MonoBehaviour
                 var parentSensor = sensorData.sensors[parentIndex];
                 // Draw line
                 Gizmos.color = Color.yellow;
-                Gizmos.DrawLine(bone.TransformPoint(sensorData.sensors[index].localPositionOffset), animator.GetBoneTransform(parentSensor.bone).TransformPoint(parentSensor.localPositionOffset));
+                //bone base
+                Gizmos.DrawLine(basePos, animator.GetBoneTransform(parentSensor.bone).position);
+                //sensor 
+                //Gizmos.DrawLine(bone.TransformPoint(sensorData.sensors[index].localPositionOffset), animator.GetBoneTransform(parentSensor.bone).TransformPoint(parentSensor.localPositionOffset));
             }
 
             index++;
