@@ -31,22 +31,22 @@ MonoBehaviour:
   - jointPoint: 3
     bone: 11
     localPositionOffset: {x: -0.07, y: -0.04, z: 0.04}
-    forward: {x: 0, y: 0, z: 1}
+    forward: {x: 1, y: 0, z: 0}
     up: {x: 0, y: 1, z: 0}
   - jointPoint: 4
     bone: 13
     localPositionOffset: {x: -0.22, y: 0.01, z: 0.02}
-    forward: {x: 0, y: 0, z: 1}
+    forward: {x: 1, y: 0, z: 0}
     up: {x: 0, y: 1, z: 0}
   - jointPoint: 5
     bone: 15
     localPositionOffset: {x: -0.25, y: -0.02, z: 0}
-    forward: {x: 0, y: 0, z: 1}
+    forward: {x: 1, y: 0, z: 0}
     up: {x: 0, y: 1, z: 0}
   - jointPoint: 6
     bone: 17
     localPositionOffset: {x: 0, y: 0.06, z: 0.02}
-    forward: {x: 0, y: 0, z: 1}
+    forward: {x: 1, y: 0, z: 0}
     up: {x: 0, y: 1, z: 0}
   - jointPoint: 7
     bone: 1
@@ -60,28 +60,28 @@ MonoBehaviour:
     up: {x: 0, y: 1, z: 0}
   - jointPoint: 9
     bone: 5
-    localPositionOffset: {x: 0, y: 0, z: 0}
-    forward: {x: 0, y: 0, z: 1}
-    up: {x: 0, y: 1, z: 0}
+    localPositionOffset: {x: -0.08, y: -0.018, z: 0}
+    forward: {x: 0, y: -1, z: 0}
+    up: {x: 0, y: 0, z: 1}
   - jointPoint: 10
     bone: 12
     localPositionOffset: {x: -0.07, y: 0.04, z: 0.04}
-    forward: {x: 0, y: 0, z: 1}
+    forward: {x: -1, y: 0, z: 0}
     up: {x: 0, y: 1, z: 0}
   - jointPoint: 11
     bone: 14
     localPositionOffset: {x: -0.22, y: -0.01, z: 0.02}
-    forward: {x: 0, y: 0, z: 1}
+    forward: {x: -1, y: 0, z: 0}
     up: {x: 0, y: 1, z: 0}
   - jointPoint: 12
     bone: 16
     localPositionOffset: {x: -0.25, y: 0.02, z: 0}
-    forward: {x: 0, y: 0, z: 1}
+    forward: {x: -1, y: 0, z: 0}
     up: {x: 0, y: 1, z: 0}
   - jointPoint: 13
     bone: 18
     localPositionOffset: {x: 0, y: -0.06, z: 0.02}
-    forward: {x: 0, y: 0, z: 1}
+    forward: {x: -1, y: 0, z: 0}
     up: {x: 0, y: 1, z: 0}
   - jointPoint: 14
     bone: 2
@@ -95,6 +95,6 @@ MonoBehaviour:
     up: {x: 0, y: 1, z: 0}
   - jointPoint: 16
     bone: 6
-    localPositionOffset: {x: 0, y: 0, z: 0}
-    forward: {x: 0, y: 0, z: 1}
-    up: {x: 0, y: 1, z: 0}
+    localPositionOffset: {x: -0.08, y: 0.018, z: 0}
+    forward: {x: 0, y: -1, z: 0}
+    up: {x: 0, y: 0, z: 1}

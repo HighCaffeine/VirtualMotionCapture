@@ -4,6 +4,10 @@ public class SensorGizmo : MonoBehaviour
 {
     public float axisLength = 0.1f;
 
+    [SerializeField] private SensorOffsetData.SensorEntry sensorData;
+
+    //public void Init()
+
     void OnDrawGizmos()
     {
         Vector3 pos = transform.position;

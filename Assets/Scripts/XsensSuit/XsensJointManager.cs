@@ -66,6 +66,32 @@ public class XsensJointManager : MonoBehaviour
         return calibratedBoneRotation;
     }
 
+    Vector3 ConvertXsensToUnity(Vector3 xsensVector)
+    {
+        return new Vector3(
+            xsensVector.x,    // X는 동일
+            xsensVector.z,    // Z (Xsens up) → Unity Y
+            xsensVector.y     // Y (Xsens forward) → Unity Z
+        );
+    }
+
+    Quaternion ConvertXsensToUnity(Quaternion xsensRotation)
+    {
+        // Xsens은 오른손 좌표계이므로, Z축 반전을 통해 Unity 좌표계에 맞춤
+        return new Quaternion(xsensRotation.x, xsensRotation.y, -xsensRotation.z, -xsensRotation.w);
+    }
+
+    private void ApplyBoneRotate(Quaternion xsensSensorRotation, SensorOffsetData.SensorEntry sensor)
+    {
+        var bone = animator.GetBoneTransform(sensor.bone);
+
+        bone.rotation = ConvertXsensToUnity(xsensSensorRotation) * Quaternion.LookRotation(sensor.forward, sensor.up);
+        var sensorRotation = Quaternion.LookRotation(sensor.forward, sensor.up);
+        bone.rotation = ConvertXsensToUnity(xsensSensorRotation) * sensorRotation;
+
+    }
+
+
     // List<JointInfo> sensorJointInfos = new List<JointInfo>
     // {
     //     new JointInfo { name = GetJointName(eXSensSuitJointPoint.Pelvis),       bone = HumanBodyBones.Hips,             forward = Vector3.forward,  up = Vector3.up },

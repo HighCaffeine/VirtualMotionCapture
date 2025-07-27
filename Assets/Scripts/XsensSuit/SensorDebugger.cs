@@ -54,7 +54,8 @@ public class SensorDebugger : MonoBehaviour
                 //bone base
                 Gizmos.DrawLine(basePos, animator.GetBoneTransform(parentSensor.bone).position);
                 //sensor 
-                //Gizmos.DrawLine(bone.TransformPoint(sensorData.sensors[index].localPositionOffset), animator.GetBoneTransform(parentSensor.bone).TransformPoint(parentSensor.localPositionOffset));
+                //Gizmos.DrawLine(bone.TransformPoint(sensorData.sensors[index].localPositionOffset), 
+                //                  animator.GetBoneTransform(parentSensor.bone).TransformPoint(parentSensor.localPositionOffset));
             }
 
             index++;
