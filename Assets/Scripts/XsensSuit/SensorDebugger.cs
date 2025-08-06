@@ -1,11 +1,43 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.Mathematics;
 
 public class SensorDebugger : MonoBehaviour
 {
-    public SensorOffsetData sensorData;
-    public Animator animator;
-    public float gizmoSize = 0.02f;
+    [SerializeField] private SensorOffsetData sensorData;
+    [SerializeField] private Animator animator;         //VRM Avatar
+    [SerializeField] private float gizmoSize = 0.02f;
+
+    [SerializeField] private Animator baseAvatar;       //Xsens Live Animation Model
+
+    private Vector3 ConvertSensorPosToBase(SensorOffsetData.SensorEntry sensorEntry)
+    {
+        var baseBone = baseAvatar.GetBoneTransform(sensorEntry.bone);
+        var targetBone = animator.GetBoneTransform(sensorEntry.bone);
+        float avatarScale = GetScaleRatio();
+
+        Vector3 newSensorOffset = sensorEntry.localPositionOffset * avatarScale;
+
+        Vector3 baseSensorWorldPos = baseBone.position + baseBone.rotation * newSensorOffset;
+        Vector3 targetLocalOffset = Quaternion.Inverse(targetBone.rotation) * (baseSensorWorldPos - baseBone.position);
+        Vector3 targetSensorWorldPos = targetBone.position + targetBone.rotation * targetLocalOffset;
+
+        return targetSensorWorldPos;
+    }
+
+    private float GetScaleRatio()
+    {
+        Transform baseBoneStart = baseAvatar.GetBoneTransform(HumanBodyBones.LeftUpperArm);
+        Transform baseBoneEnd = baseAvatar.GetBoneTransform(HumanBodyBones.LeftLowerArm);
+
+        Transform targetBoneStart = animator.GetBoneTransform(HumanBodyBones.LeftUpperArm);
+        Transform targetBoneEnd = animator.GetBoneTransform(HumanBodyBones.LeftLowerArm);
+
+        float baseLength = Vector3.Distance(baseBoneStart.position, baseBoneEnd.position);
+        float targetLength = Vector3.Distance(targetBoneStart.position, targetBoneEnd.position);
+
+        return targetLength / baseLength;
+    }
 
     void OnDrawGizmos()
     {
@@ -22,7 +54,8 @@ public class SensorDebugger : MonoBehaviour
             }
 
             Vector3 basePos = bone.position;
-            Vector3 sensorPos = bone.TransformPoint(sensor.localPositionOffset);
+            //Vector3 sensorPos = bone.TransformPoint(sensor.localPositionOffset);
+            Vector3 sensorPos = ConvertSensorPosToBase(sensor);
 
             // Draw line
             //Gizmos.color = Color.yellow;
@@ -33,17 +66,17 @@ public class SensorDebugger : MonoBehaviour
             Gizmos.DrawSphere(sensorPos, gizmoSize * 0.1f);
 
             // Draw forward/up
-            Vector3 forward = bone.TransformDirection(sensor.forward.normalized);
-            Vector3 up = bone.TransformDirection(sensor.up.normalized);
 
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(sensorPos, sensorPos + forward * gizmoSize);
+            //Gizmos.DrawLine(sensorPos, sensorPos + forward * gizmoSize);
+            Gizmos.DrawLine(basePos, basePos + sensor.forward * gizmoSize);
 
             Gizmos.color = Color.green;
-            Gizmos.DrawLine(sensorPos, sensorPos + up * gizmoSize);
+            //Gizmos.DrawLine(sensorPos, sensorPos + up * gizmoSize);
+            Gizmos.DrawLine(basePos, basePos + sensor.up * gizmoSize);
+
 
             //모든 센서를 휴머노이드 계층 구조에 따라 연결시켜줌
-
             int parentIndex = JointSpawner.Instance.GetSensorParentIndex(index);
 
             if (parentIndex != -1)
