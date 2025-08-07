@@ -11,19 +11,19 @@ public class JointSpawner : GenericSingleton<JointSpawner>
     //휴머노이드 리깅 계층구조
     Dictionary<int, int> sensorParentMap = new Dictionary<int, int>
     {
-        { 1, 0 },   // Sternum → Pelvis
-        { 2, 1 },   // Head → Sternum
+        { 1, 0 },   // Sternum      -> Pelvis
+        { 2, 1 },   // Head         -> Sternum
     
-        { 3, 1 },   // L Shoulder → Sternum
-        { 4, 3 },   // L Upper Arm → L Shoulder
-        { 5, 4 },   // L Lower Arm → L Upper Arm
-        { 6, 5 },   // L Hand → L Lower Arm
+        { 3, 1 },   // L Shoulder   -> Sternum
+        { 4, 3 },   // L Upper Arm  -> L Shoulder
+        { 5, 4 },   // L Lower Arm  -> L Upper Arm
+        { 6, 5 },   // L Hand       -> L Lower Arm
     
-        { 7, 0 },   // L Upper Leg → Pelvis
-        { 8, 7 },   // L Lower Leg → L Upper Leg
-        { 9, 8 },   // L Foot → L Lower Leg
+        { 7, 0 },   // L Upper Leg  -> Pelvis
+        { 8, 7 },   // L Lower Leg  -> L Upper Leg
+        { 9, 8 },   // L Foot       -> L Lower Leg
     
-        { 10, 1 },  // R Shoulder → Sternum
+        { 10, 1 },  // R Shoulder   -> Sternum
         { 11, 10 },
         { 12, 11 },
         { 13, 12 },
