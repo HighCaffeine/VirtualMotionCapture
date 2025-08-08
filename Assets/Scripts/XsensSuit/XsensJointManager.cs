@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 
-public class XsensJointManager : MonoBehaviour
+public class XsensJointManager : GenericSingleton<XsensJointManager>
 {
     public enum eXSensSuitJointPoint
     {
@@ -17,15 +17,88 @@ public class XsensJointManager : MonoBehaviour
         Count
     }
 
-    private List<GameObject> jointPoints;
+    public class SensorSegmentData
+    {
+        public int jointNum;
+        public float xPos;
+        public float yPos;
+        public float zPos;
+
+        public float xRot;
+        public float yRot;
+        public float zRot;
+    }
+
+    private List<SensorDataSender> jointPoints;
+    private List<SensorSegmentData> sensorDatas;
 
     private Quaternion[] jointCalibrations = new Quaternion[Devcat.ValueCastTo<int>.From(eXSensSuitJointPoint.Count)];
 
-    [Header("Target Model Animator")][SerializeField] private Animator animator;
+    [Header("Target Model Animator")][SerializeField] private Animator target;
+    [Header("Base Model Animator")][SerializeField] private Animator baseAvatar;
 
-    void Start()
+    private new void Awake()
+    {
+        sensorDatas = new List<SensorSegmentData>();
+    }
+
+    private void Start()
     {
         jointPoints = JointSpawner.Instance.CreateJoint();
+    }
+
+    public Transform GetBone(SensorOffsetData.SensorEntry sensorEntry)
+    {
+        return target.GetBoneTransform(sensorEntry.bone);
+    }
+
+    public Transform GetBaseBone(SensorOffsetData.SensorEntry sensorEntry)
+    {
+        return baseAvatar.GetBoneTransform(sensorEntry.bone);
+    }
+
+    public Vector3 ConvertBaseSensor(SensorOffsetData.SensorEntry sensorEntry)
+    {
+        var baseBone = baseAvatar.GetBoneTransform(sensorEntry.bone);
+        var targetBone = baseAvatar.GetBoneTransform(sensorEntry.bone);
+        float avatarScale = GetScaleRatio();
+
+        Vector3 newSensorOffset = sensorEntry.localPositionOffset * avatarScale;
+
+        Vector3 baseSensorWorldPos = baseBone.position + baseBone.rotation * newSensorOffset;
+        Vector3 targetLocalOffset = Quaternion.Inverse(targetBone.rotation) * (baseSensorWorldPos - baseBone.position);
+        Vector3 targetSensorWorldPos = targetBone.position + targetBone.rotation * targetLocalOffset;
+
+        return targetSensorWorldPos;
+    }
+
+    public Vector3 ConvertSensorPosToBase(SensorOffsetData.SensorEntry sensorEntry)
+    {
+        var baseBone = baseAvatar.GetBoneTransform(sensorEntry.bone);
+        var targetBone = target.GetBoneTransform(sensorEntry.bone);
+        float avatarScale = GetScaleRatio();
+
+        Vector3 newSensorOffset = sensorEntry.localPositionOffset * avatarScale;
+
+        Vector3 baseSensorWorldPos = baseBone.position + baseBone.rotation * newSensorOffset;
+        Vector3 targetLocalOffset = Quaternion.Inverse(targetBone.rotation) * (baseSensorWorldPos - baseBone.position);
+        Vector3 targetSensorWorldPos = targetBone.position + targetBone.rotation * targetLocalOffset;
+
+        return targetSensorWorldPos;
+    }
+
+    public float GetScaleRatio()
+    {
+        Transform baseBoneStart = baseAvatar.GetBoneTransform(HumanBodyBones.LeftUpperArm);
+        Transform baseBoneEnd = baseAvatar.GetBoneTransform(HumanBodyBones.LeftLowerArm);
+
+        Transform targetBoneStart = target.GetBoneTransform(HumanBodyBones.LeftUpperArm);
+        Transform targetBoneEnd = target.GetBoneTransform(HumanBodyBones.LeftLowerArm);
+
+        float baseLength = Vector3.Distance(baseBoneStart.position, baseBoneEnd.position);
+        float targetLength = Vector3.Distance(targetBoneStart.position, targetBoneEnd.position);
+
+        return targetLength / baseLength;
     }
 
 
@@ -56,7 +129,7 @@ public class XsensJointManager : MonoBehaviour
     //매개변수로 넘어온 관절 포인트의 센서 회전값을 통해 본의 회전값을 역산하여 추정 (offset vector 회전수치 사용)
     private Quaternion GetBoneRotation(eXSensSuitJointPoint eXSensSuitJointPoint)
     {
-        Transform boneTransform = animator.GetBoneTransform(HumanBodyBones.RightLowerLeg);
+        Transform boneTransform = target.GetBoneTransform(HumanBodyBones.RightLowerLeg);
         Quaternion initialBoneRotation = boneTransform.rotation; // Unity 기준 회전
 
         Quaternion initialSensorRotation = GetSensorRotation(eXSensSuitJointPoint); // 센서가 처음 측정한 회전
@@ -83,12 +156,11 @@ public class XsensJointManager : MonoBehaviour
 
     private void ApplyBoneRotate(Quaternion xsensSensorRotation, SensorOffsetData.SensorEntry sensor)
     {
-        var bone = animator.GetBoneTransform(sensor.bone);
+        var bone = target.GetBoneTransform(sensor.bone);
 
         bone.rotation = ConvertXsensToUnity(xsensSensorRotation) * Quaternion.LookRotation(sensor.forward, sensor.up);
         var sensorRotation = Quaternion.LookRotation(sensor.forward, sensor.up);
         bone.rotation = ConvertXsensToUnity(xsensSensorRotation) * sensorRotation;
-
     }
 
 

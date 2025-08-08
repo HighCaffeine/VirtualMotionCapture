@@ -3,9 +3,7 @@ using System.Collections.Generic;
 
 public class JointSpawner : GenericSingleton<JointSpawner>
 {
-    [SerializeField] private GameObject jointPrefab; // Empty + Gizmo용 프리팹
-    [SerializeField] private Animator sourceAnimator; // 애니메이션 재생용 모델
-
+    [SerializeField] private SensorDataSender jointPrefab; // Empty + Gizmo용 프리팹
     [SerializeField] private SensorOffsetData sensorOffsetData;
 
     //휴머노이드 리깅 계층구조
@@ -46,9 +44,9 @@ public class JointSpawner : GenericSingleton<JointSpawner>
         }
     }
 
-    public List<GameObject> CreateJoint()
+    public List<SensorDataSender> CreateJoint()
     {
-        List<GameObject> jointObjects = new List<GameObject>();
+        List<SensorDataSender> jointObjects = new List<SensorDataSender>();
         int count = Devcat.ValueCastTo<int>.From(XsensJointManager.eXSensSuitJointPoint.Count);
 
         for (int i = 0; i < count; i++)
@@ -56,7 +54,7 @@ public class JointSpawner : GenericSingleton<JointSpawner>
             var sensor = sensorOffsetData.sensors[i];
 
             //센서에 해당하는 본의 Transform을 받음
-            Transform bone = sourceAnimator.GetBoneTransform(sensor.bone);
+            Transform bone = XsensJointManager.Instance.GetBaseBone(sensor);
 
             if (bone == null)
             {
@@ -65,12 +63,15 @@ public class JointSpawner : GenericSingleton<JointSpawner>
                 continue;
             }
 
+            Vector3 newSensorPos = XsensJointManager.Instance.ConvertBaseSensor(sensor);
+            Quaternion rot = Quaternion.LookRotation(sensor.forward, sensor.up);
+
             //센서의 로컬 오프셋 값을 기준 본에 더한 위치에 생성
-            GameObject joint = Instantiate(jointPrefab, bone.transform.position + sensor.localPositionOffset, Quaternion.identity);
+            SensorDataSender joint = Instantiate(jointPrefab, newSensorPos, rot, bone);
 
             joint.name = $"{i:D2}_{sensor.jointPoint}";
             joint.transform.localScale = Vector3.one * 0.02f;
-            jointObjects[i] = joint;
+            jointObjects.Add(joint);
 
             // 회전 적용 (Z+: forward, Y+: up)
             joint.transform.rotation = Quaternion.LookRotation(
@@ -80,19 +81,19 @@ public class JointSpawner : GenericSingleton<JointSpawner>
         }
 
         //실제 생성된 관절 포인트들을 하이라키 계층구로로 바꿔줌
-        for (int i = 0; i < count; i++)
-        {
-            int parentIndex = GetSensorParentIndex(i);
+        // for (int i = 0; i < count; i++)
+        // {
+        //     int parentIndex = GetSensorParentIndex(i);
 
-            if (parentIndex != -1)
-            {
-                jointObjects[i].transform.SetParent(jointObjects[parentIndex].transform, true);
-            }
-            else
-            {
-                jointObjects[i].transform.SetParent(jointObjects[Devcat.ValueCastTo<int>.From(XsensJointManager.eXSensSuitJointPoint.Pelvis)].transform);
-            }
-        }
+        //     if (parentIndex != -1)
+        //     {
+        //         jointObjects[i].transform.SetParent(jointObjects[parentIndex].transform, true);
+        //     }
+        //     else
+        //     {
+        //         jointObjects[i].transform.SetParent(jointObjects[Devcat.ValueCastTo<int>.From(XsensJointManager.eXSensSuitJointPoint.Pelvis)].transform);
+        //     }
+        // }
 
         return jointObjects;
     }

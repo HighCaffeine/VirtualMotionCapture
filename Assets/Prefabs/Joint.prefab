@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4851459315593048384}
   - component: {fileID: 7870105879777355192}
+  - component: {fileID: 2169242470997113400}
   m_Layer: 0
   m_Name: Joint
   m_TagString: Untagged
@@ -39,9 +40,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6058676799442961819}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83d591bff0413594e93918bfef924568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   axisLength: 0.1
+  sensorData:
+    jointPoint: 0
+    bone: 0
+    localPositionOffset: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: 0, z: 1}
+    up: {x: 0, y: 1, z: 0}
+--- !u!114 &2169242470997113400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6058676799442961819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 703177e05ca320d4890e670a571ca849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
