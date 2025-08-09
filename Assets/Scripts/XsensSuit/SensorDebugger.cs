@@ -7,6 +7,7 @@ public class SensorDebugger : MonoBehaviour
     [SerializeField] private SensorOffsetData sensorData;
     [SerializeField] private float gizmoSize = 0.02f;
 
+#if UNITY_EDITOR_64
     void OnDrawGizmos()
     {
         if (sensorData == null) return;
@@ -63,4 +64,5 @@ public class SensorDebugger : MonoBehaviour
             index++;
         }
     }
+#endif
 }

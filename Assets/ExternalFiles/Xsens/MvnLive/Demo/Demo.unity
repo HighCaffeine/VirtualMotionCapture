@@ -168915,7 +168915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ad048abb3db564eb127321fcc91ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 672240426}
+  targetAvatar: {fileID: 672240426}
   baseAvatar: {fileID: 1763662623}
 --- !u!114 &1860510059
 MonoBehaviour:

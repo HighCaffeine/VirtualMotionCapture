@@ -44,7 +44,7 @@ public class JointSpawner : GenericSingleton<JointSpawner>
         }
     }
 
-    public List<SensorDataSender> CreateJoint()
+    public List<SensorDataSender> CreateJoint(XsensJointManager.eModelName modelName)
     {
         List<SensorDataSender> jointObjects = new List<SensorDataSender>();
         int count = Devcat.ValueCastTo<int>.From(XsensJointManager.eXSensSuitJointPoint.Count);
@@ -68,8 +68,13 @@ public class JointSpawner : GenericSingleton<JointSpawner>
 
             //센서의 로컬 오프셋 값을 기준 본에 더한 위치에 생성
             SensorDataSender joint = Instantiate(jointPrefab, newSensorPos, rot, bone);
+            joint.SetModelName(modelName);
+            joint.SetJointPoint(sensor.jointPoint);
 
-            joint.name = $"{i:D2}_{sensor.jointPoint}";
+            //TEST
+            joint.TEST_SetBone(bone);
+
+            joint.name = $"{i:D2}_{sensor.jointPoint}_({modelName})";
             joint.transform.localScale = Vector3.one * 0.02f;
             jointObjects.Add(joint);
 
