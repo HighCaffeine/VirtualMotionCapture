@@ -53,6 +53,16 @@ public class XsensJointManager : GenericSingleton<XsensJointManager>
             xPos = pos.x; yPos = pos.y; zPos = pos.z;
             xRot = rot.x; yRot = rot.y; zRot = rot.z; w = rot.w;
         }
+
+        public Vector3 GetPos()
+        {
+            return new Vector3(xPos, yPos, zPos);
+        }
+
+        public Quaternion GetRot()
+        {
+            return new Quaternion(xRot, yRot, zRot, w);
+        }
     }
 
     public class ModelSensorPoint
@@ -79,16 +89,22 @@ public class XsensJointManager : GenericSingleton<XsensJointManager>
 
     private Quaternion[] jointCalibrations = new Quaternion[Devcat.ValueCastTo<int>.From(eXSensSuitJointPoint.Count)];
 
-    [Header("Target Model Animator")][SerializeField] private Animator targetAvatar;
-    [Header("Base Model Animator")][SerializeField] private Animator baseAvatar;
+    [Header("Base Model")][SerializeField] private Animator baseAvatar;
+    [Header("Xsens Client Model")][SerializeField] private Animator xsensClientAvatar;
+    [Header("Target VRM Model")][SerializeField] private Animator targetAvatar;
 
     private new void Awake()
     {
         modelSensorDatas = new Dictionary<int, ModelSensorPoint>();
+
     }
 
     private void Start()
     {
+        AddCharacter(eModelName.Xsens_Suit);
+        AddCharacter(eModelName.Xsens_Client);
+        AddCharacter(eModelName.IkomaMiru_MellowHeart);
+
         jointPoints = JointSpawner.Instance.CreateJoint(eModelName.IkomaMiru_MellowHeart);
     }
 
@@ -150,6 +166,23 @@ public class XsensJointManager : GenericSingleton<XsensJointManager>
         return true;
     }
 
+    public ModelSensorPoint GetModelSensorDatas(eModelName modelName)
+    {
+        int key = Devcat.ValueCastTo<int>.From(modelName);
+
+        if (!modelSensorDatas.ContainsKey(key))
+        {
+            return null;
+        }
+
+        if (key < 0 || modelSensorDatas.Count <= key)
+        {
+            Debug.Log($"Index Out Of Range(GetModelSensorDatas) : {key}");
+        }
+
+        return modelSensorDatas[key];
+    }
+
 
     // Xsens Suit -> Xsens Client Model -> Xsens Unity Live Animation Model
     // 3가지 변환을 거치게 됨.
@@ -174,27 +207,40 @@ public class XsensJointManager : GenericSingleton<XsensJointManager>
         return true;
     }
 
-    // // 센서 위치를 기준으로 담당 관절 포인트에 각속도를 넣어줌
-    // public Vector3 ConvertSensorToJoint(eModelName modelName, SensorOffsetData.SensorEntry sensorEntry)
-    // {
-    //     var sensor =;
-    //     var bone = ;
-    //     //var baseBone = b.GetBoneTransform(sensorEntry.bone);
-    //     var targetBone = t.GetBoneTransform(sensorEntry.bone);
-    //     float avatarScale = GetScaleRatio();
+    // 센서 위치를 기준으로 담당 관절 포인트에 각속도를 넣어줌
+    // 1->2로 가는 부분 (base Avatar에 있는 센서 데이터를 XsensClient에게 전송)
+    public void SendSuitToXsensClient()
+    {
+        //서버 매니저에게 요청
+    }
+    // 2->3로 가는 부분 (Xsens클라이언트의 관절 데이터를 targetAvatar(VRM)에 전송)
+    public void SendXsensClientToVRMClient()
+    {
+        //서버 매니저에게 요청
+    }
 
-    //     Vector3 newSensorOffset = sensorEntry.localPositionOffset * avatarScale;
 
-    //     Vector3 baseSensorWorldPos = baseBone.position + baseBone.rotation * newSensorOffset;
-    //     Vector3 targetLocalOffset = Quaternion.Inverse(targetBone.rotation) * (baseSensorWorldPos - baseBone.position);
-    //     Vector3 targetSensorWorldPos = targetBone.position + targetBone.rotation * targetLocalOffset;
+    //2번에서 처리하는 과정 받은 센서 데이터를 관절 데이터로 변환
+    public Vector3 ConvertSensorToJoint(eModelName modelName, SensorOffsetData.SensorEntry sensorEntry)
+    {
+        var sensor = GetModelSensorDatas(modelName).GetSensorSegmentData(sensorEntry.jointPoint);
+        var targetBone = xsensClientAvatar.GetBoneTransform(sensorEntry.bone);
+        //float avatarScale = GetScaleRatio();
+        float avatarScale = 1.0f;
 
-    // }
+        Vector3 newSensorOffset = sensorEntry.localPositionOffset * avatarScale;
 
-    // public Vector3 ConvertJointToHumanoid(eModelName modelName, SensorOffsetData.SensorEntry sensorEntry)
-    // {
+        Vector3 baseSensorWorldPos = sensor.GetPos() + sensor.GetRot() * newSensorOffset;
+        Vector3 targetLocalOffset = Quaternion.Inverse(targetBone.rotation) * (baseSensorWorldPos - sensor.GetPos());
+        Vector3 targetJointPoint = targetBone.position + targetBone.rotation * targetLocalOffset;
 
-    // }
+        return targetJointPoint;
+    }
+
+    public Vector3 ConvertJointToHumanoid(eModelName modelName, SensorOffsetData.SensorEntry sensorEntry)
+    {
+
+    }
 
 
     public float GetScaleRatio()
@@ -220,6 +266,11 @@ public class XsensJointManager : GenericSingleton<XsensJointManager>
     }
 
     //캘리브레이션 데이터 저장
+    //Coroutine으로 변경
+    //약 3~5초가량 데이터를 수집 IMU AHRS 알고리즘 사용
+    //수집된 데이터를 기준으로 초기값을 설정
+    //아래 JointCalibrations는 제거 후
+    //ModelSensorPoint 리스트로 작성
     private void SetCalibrationData()
     {
         int index = 0;
